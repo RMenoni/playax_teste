@@ -16,7 +16,7 @@ class Importers::PdfEcad
             lines.each do |line|
                 if is_work(line)
                     unless curr.empty?
-                        res.push(curr)
+                        res << curr
                         curr = {}
                     end
                     curr = work(line)
@@ -97,9 +97,9 @@ class Importers::PdfEcad
 
 
     def work_to_array(line)
-        parts = line.split(/ {2,}|(-\s{3}\.\s{3}\.\s{3}-)/)
-        parts.delete('')
-        parts
+        res = line.split(/ {2,}|(-\s{3}\.\s{3}\.\s{3}-)/)
+        res.delete('')
+        res
     end
 
     def is_right_holder(line)
